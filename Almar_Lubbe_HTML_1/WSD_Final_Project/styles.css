@@ -1,0 +1,313 @@
+:root{
+  --bg:#121214;
+  --card:#1f1f21;
+  --text:#c0c0c0;
+  --muted:#9e9e9e;
+  --accent:#e03a3a;
+  --white:#ffffff;
+  --black:#000000;
+}
+
+body.light-mode{
+  --bg:#f5f5f5;
+  --card:#ffffff;
+  --text:#222;
+  --muted:#666;
+  --white:#000;
+  --black:#fff;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Rajdhani",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+/* Accessibility */
+.visually-hidden-focusable:not(:focus):not(:focus-within){
+  position:absolute!important;
+  width:1px!important;height:1px!important;
+  padding:0!important;margin:-1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;border:0!important;
+}
+.skip-to-content{
+  position:absolute;top:-40px;left:0;
+  background:var(--accent);color:#fff;
+  padding:8px 12px;text-decoration:none;z-index:9999;
+  border-radius:0 0 6px 0;
+}
+.skip-to-content:focus{top:0}
+
+/* Animations */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-in-up{opacity:0;animation:fadeInUp .6s ease-out forwards}
+.fade-in-up.delay-1{animation-delay:.12s}
+.fade-in-up.delay-2{animation-delay:.22s}
+
+/* NAVBAR */
+.custom-navbar{
+  background-color:rgba(20,20,20,.6)!important;
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  position:fixed;top:16px;left:50%;
+  transform:translateX(-50%);
+  width:95%;max-width:1200px;z-index:1000;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 12px 30px rgba(0,0,0,.45);
+  padding:.25rem .75rem;
+}
+body.light-mode .custom-navbar{
+  background-color:rgba(255,255,255,.65)!important;
+  border:1px solid rgba(0,0,0,.08);
+}
+.custom-navbar .nav-link{color:var(--text)!important;border-radius:8px;padding:.55rem .9rem!important}
+.custom-navbar .nav-link:hover{background:rgba(224,58,58,.10);color:var(--white)!important}
+.nav-profile-pic{width:40px;height:40px;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  padding:6rem 1rem 3rem;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  position:relative;
+  background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.6));
+}
+body.light-mode .hero{
+  background:linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,.85));
+}
+.banner-container{
+  position:absolute;top:38%;
+  width:100%;display:flex;justify-content:center;
+  padding:0 1rem;
+}
+.name-banner{
+  font-family:"Orbitron","Rajdhani",sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:clamp(2rem, 8vw, 6rem);
+  text-align:center;
+  color:var(--text);
+}
+.header-info{
+  position:absolute;left:1.2rem;bottom:1.2rem;
+  display:flex;flex-direction:column;gap:.35rem;
+  color:var(--white);
+}
+.profile-image{
+  width:clamp(250px, 55vw, 560px);
+  aspect-ratio:1;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-profile{
+  width:100%;height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+  border:2px solid rgba(255,255,255,.08);
+}
+.nav-profile-pic {
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-profile {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.about-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Scroll button */
+.main__action{position:absolute;top:14%;left:50%;transform:translateX(-50%);z-index:10}
+.main__scroll{text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:.35rem}
+.main__scroll-text{
+  font-family:"Orbitron",sans-serif;
+  font-size:.85rem;letter-spacing:.12em;
+  color:rgba(255,255,255,.85);
+}
+body.light-mode .main__scroll-text{color:rgba(28,28,30,1)}
+.main__scroll-box{width:2rem;height:2rem;display:flex;align-items:center;justify-content:center}
+.main__scroll-box svg{width:100%;height:100%}
+body:not(.light-mode) .main__scroll-box svg path:last-child{fill:rgba(255,255,255,.85)}
+body.light-mode .main__scroll-box svg path:last-child{fill:rgba(28,28,30,1)}
+
+/* Sections */
+.section-block{
+  background:#000;
+  min-height:100vh;
+  padding:6rem 0 3rem;
+}
+body.light-mode .section-block{background:#faf9f6}
+.about-section,.skills-section,.projects-section,.testimonials-section,.contact-section{
+  color:var(--white);
+}
+body.light-mode .about-section,
+body.light-mode .skills-section,
+body.light-mode .projects-section,
+body.light-mode .testimonials-section,
+body.light-mode .contact-section{color:var(--white)} /* in light mode --white becomes black */
+
+.subsection-heading{
+  font-family:"Orbitron",sans-serif;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:1rem;
+}
+
+/* ABOUT banner */
+.about-banner-container{
+  position:absolute;left:50%;transform:translateX(-50%);
+  top:0;width:120%;opacity:.08;pointer-events:none;
+  display:flex;justify-content:center;overflow:hidden;
+}
+.about-name-banner{
+  font-family:"Orbitron",sans-serif;
+  font-size:4rem;white-space:nowrap;letter-spacing:.12em;
+  animation:slide 40s linear infinite;
+}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* Cards */
+.skill-card,.project-card,.testimonial-card,.contact-form{
+  background:rgba(31,31,33,.85);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  padding:2rem;
+  transition:.25s ease;
+}
+body.light-mode .skill-card,
+body.light-mode .project-card,
+body.light-mode .testimonial-card,
+body.light-mode .contact-form{
+  background:#fff;border:1px solid #e5e5e5;
+}
+.skill-card:hover,.project-card:hover,.testimonial-card:hover,.contact-form:hover{
+  border-color:var(--accent);
+  box-shadow:0 14px 34px rgba(224,58,58,.18);
+  transform:translateY(-2px);
+}
+
+/* Skills */
+.skill-card-title{
+  font-family:"Orbitron",sans-serif;
+  margin-bottom:1rem;
+}
+.skill-row{margin-top:1rem}
+.skill-row label{
+  display:block;
+  font-family:"Orbitron",sans-serif;
+  font-size:.85rem;
+  margin-bottom:.35rem;
+  color:var(--text);
+}
+.progress{height:10px;border-radius:999px;background:rgba(255,255,255,.15);overflow:hidden}
+.progress-bar{height:100%;background:var(--accent)!important}
+
+/* Badges */
+.badge{font-family:"Orbitron",sans-serif}
+.bg-danger-soft{background:rgba(224,58,58,.18)!important;color:var(--accent)!important;border:1px solid var(--accent)}
+.bg-info-soft{background:rgba(23,162,184,.18)!important;color:#17a2b8!important;border:1px solid #17a2b8}
+.bg-warning-soft{background:rgba(255,193,7,.18)!important;color:#ffc107!important;border:1px solid #ffc107}
+.bg-success-soft{background:rgba(40,167,69,.18)!important;color:#28a745!important;border:1px solid #28a745}
+
+/* Projects */
+.project-card-link{color:inherit;text-decoration:none;display:block}
+.project-link{
+  display:inline-block;margin-top:1rem;
+  padding:.45rem .8rem;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.08);
+}
+.project-card:hover .project-link{border-color:var(--accent);background:rgba(224,58,58,.10)}
+
+/* Testimonials */
+.carousel-indicators [data-bs-target]{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--muted);opacity:.5
+}
+.carousel-indicators .active{background:var(--accent);opacity:1}
+.carousel-control-prev-icon,.carousel-control-next-icon{
+  background-color:var(--accent);
+  border-radius:50%;
+}
+
+/* Contact */
+.form-control-custom{
+  background:rgba(255,255,255,.06)!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  color:var(--white)!important;
+}
+body.light-mode .form-control-custom{
+  background:#fff!important;border:1px solid #d6d6d6!important;color:#000!important;
+}
+.form-control-custom:focus{
+  border-color:var(--accent)!important;
+  box-shadow:0 0 0 .2rem rgba(224,58,58,.20)!important;
+}
+.form-label{
+  font-family:"Orbitron",sans-serif;
+  text-transform:uppercase;letter-spacing:.06em;font-size:.85rem
+}
+.btn-submit{
+  background:var(--accent);
+  color:#fff;border:none;
+  font-family:"Orbitron",sans-serif;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.btn-submit:hover{filter:brightness(.92)}
+.contact-link{color:var(--text);text-decoration:none}
+.contact-link:hover{color:var(--accent);text-decoration:underline}
+
+/* Footer + Back to top */
+.footer{background:rgba(0,0,0,.75);color:var(--text);position:relative}
+body.light-mode .footer{background:#f2f2f2}
+.back-to-top-btn{
+  width:140px;height:56px;border:none;background:none;color:#fff;cursor:pointer;position:relative;
+}
+body.light-mode .back-to-top-btn{color:#000}
+.back-to-top-btn > div, .back-to-top-btn > svg{position:absolute;width:100%;height:100%;display:flex}
+.back-to-top-btn .text{align-items:center;justify-content:center;gap:6px}
+.back-to-top-btn .clone{align-items:center;justify-content:center;gap:6px}
+.back-to-top-btn .clone > *{transform:translateY(60px);transition:.2s}
+.back-to-top-btn:hover .clone > *{transform:translateY(0)}
+.back-to-top-btn:hover .text > *{transform:translateY(-60px);transition:.2s}
+.back-to-top-btn svg{right:0;top:50%;transform:translateY(-50%) rotate(-50deg);transition:.2s}
+.back-to-top-btn:hover svg{transform:translateY(-50%) rotate(-90deg)}
+
+/* Theme toggle switch (simple) */
+.switch{position:relative;display:inline-block;width:56px;height:30px}
+.switch input{opacity:0;width:0;height:0}
+.slider{
+  position:absolute;cursor:pointer;inset:0;
+  background:#2196f3;border-radius:999px;transition:.25s;
+}
+.slider:before{
+  content:"";position:absolute;height:22px;width:22px;left:4px;top:4px;
+  background:#fff;border-radius:50%;transition:.25s;
+}
+#themeToggle:checked + .slider{background:#111}
+#themeToggle:checked + .slider:before{transform:translateX(26px)}
+
+/* Responsive */
+@media (max-width: 991px){
+  .custom-navbar{border-radius:18px;top:10px}
+  .header-info{left:1rem;bottom:1rem}
+}
+@media (max-width: 480px){
+  .hero{padding-top:5.5rem}
+  .name-banner{letter-spacing:.10em}
+  .section-block{padding-top:7rem}
+}
